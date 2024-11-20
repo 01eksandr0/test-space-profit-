@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 
 export type TaskStatus = "todo" | "inprogres" | "done";
-export type Task = {
-  id?: string;
-  title?: string;
-  description?: boolean;
-  status?: TaskStatus;
-};
+export interface Task {
+  id: number | string;
+  title: string;
+  description: string;
+  status: TaskStatus;
+}
 // @ts-ignore
 export const useTasks = defineStore("tasks", {
   state: () => ({
