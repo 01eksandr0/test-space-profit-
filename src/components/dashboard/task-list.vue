@@ -29,9 +29,18 @@ import { useTasks } from "../../stores/tasks.ts";
 const taskGroups = ["todo", "inprogres", "done"];
 import task from "./task.vue";
 
+export type TaskStatus = "todo" | "inprogres" | "done";
+
+type Task = {
+  id: number | string;
+  title: string;
+  description: string;
+  status: TaskStatus;
+};
+
 const tasks = useTasks();
 
-const taskList = computed(() => tasks.getTasks);
+const taskList = computed<Task[]>(() => tasks.getTasks);
 </script>
 
 <style scoped></style>
