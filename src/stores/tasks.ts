@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 
-type TaskStatus = "todo" | "inprogres" | "done";
-type Task = {
-  id: string;
-  title: string;
-  description: boolean;
-  status: TaskStatus;
+export type TaskStatus = "todo" | "inprogres" | "done";
+export type Task = {
+  id?: string;
+  title?: string;
+  description?: boolean;
+  status?: TaskStatus;
 };
-
+// @ts-ignore
 export const useTasks = defineStore("tasks", {
   state: () => ({
     tasks: [] as Task[],

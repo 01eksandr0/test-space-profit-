@@ -53,9 +53,9 @@ const options = [
 ];
 
 const statusValue = ref(props.item.status);
-
+// @ts-ignore
 watch(statusValue, (n) => tasks.changeTaskStatus(props.item.id, n));
-
+// @ts-ignore
 const deleteTask = () => tasks.deleteTask(props.item.id);
 </script>
 

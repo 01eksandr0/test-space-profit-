@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useTasks } from "../../stores/tasks";
+import { Task, useTasks } from "../../stores/tasks";
 
 const tasks = useTasks();
 
@@ -65,7 +65,7 @@ const scheme = {
   },
 };
 
-const formValues = ref({});
+const formValues = ref({} as Task);
 const form = ref("form");
 const error = ref("");
 const isOpen = ref(true);
@@ -80,8 +80,10 @@ const createNewTask = () => {
     error.value = "Fill in the required fields";
     return;
   }
+  // @ts-ignore
   tasks.createTask(formValues.value);
   formValues.value = {};
+  // @ts-ignore
   form.value.formValues = {};
 };
 </script>
