@@ -25,13 +25,13 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useTasks } from "../../stores/tasks.ts";
+import { useTasks, Task } from "../../stores/tasks.ts";
 const taskGroups = ["todo", "inprogres", "done"];
 import task from "./task.vue";
 
 const tasks = useTasks();
 
-const taskList = computed(() => tasks.getTasks);
+const taskList = computed<Task[]>(() => tasks.getTasks);
 </script>
 
 <style scoped></style>
