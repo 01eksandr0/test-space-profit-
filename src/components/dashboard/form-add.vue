@@ -65,7 +65,12 @@ const scheme = {
   },
 };
 
-const formValues = ref({} as Task);
+const formValues = ref<Omit<Task, "id">>({
+  title: "",
+  description: "",
+  status: "todo",
+});
+
 const form = ref("form");
 const error = ref("");
 const isOpen = ref(true);
@@ -82,6 +87,7 @@ const createNewTask = () => {
   }
   // @ts-ignore
   tasks.createTask(formValues.value);
+  // @ts-ignore
   formValues.value = {};
   // @ts-ignore
   form.value.formValues = {};
