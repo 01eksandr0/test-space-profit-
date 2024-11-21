@@ -1,12 +1,5 @@
 import { defineStore } from "pinia";
-
-export type TaskStatus = "todo" | "inprogres" | "done";
-export type Task = {
-  id: number | string;
-  title: string;
-  description: string;
-  status: TaskStatus;
-};
+import { Task, TaskStatus } from "../types/tasks.ts";
 // @ts-ignore
 export const useTasks = defineStore("tasks", {
   state: () => ({
@@ -30,7 +23,7 @@ export const useTasks = defineStore("tasks", {
     },
   },
   getters: {
-    getTasks: (s) => s.tasks,
+    getTasks: (s): Task[] => s.tasks,
   },
   persist: {
     enabled: true,

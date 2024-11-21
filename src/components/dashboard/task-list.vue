@@ -13,7 +13,7 @@
         class="overflow-y-auto p-[10px] flex flex-col gap-[10px]"
         style="height: calc(100vh - 100px)"
       >
-        <task
+        <TaskItem
           v-for="task in taskList?.filter((i) => i?.status === group)"
           :key="task?.id"
           :item="task"
@@ -24,23 +24,15 @@
 </template>
 
 <script setup lang="ts">
+import TaskItem from "./task.vue";
 import { computed } from "vue";
 import { useTasks } from "../../stores/tasks.ts";
+import { Task } from "../../types/tasks";
 const taskGroups = ["todo", "inprogres", "done"];
-import task from "./task.vue";
-
-export type TaskStatus = "todo" | "inprogres" | "done";
-
-type Task = {
-  id: number | string;
-  title: string;
-  description: string;
-  status: TaskStatus;
-};
 
 const tasks = useTasks();
 
-const taskList = computed<Task[]>(() => tasks.getTasks);
+const taskList = computed<Task[]>(() => tasks.tasks);
 </script>
 
 <style scoped></style>

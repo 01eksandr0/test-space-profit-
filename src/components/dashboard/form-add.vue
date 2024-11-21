@@ -38,7 +38,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { Task, useTasks } from "../../stores/tasks";
+import { useTasks } from "../../stores/tasks";
+import { Task } from "../../types/tasks";
 
 const tasks = useTasks();
 
